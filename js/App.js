@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './components/Button';
 import UserList  from './components/UserList';
+
  const load =  url => {
   return new Promise((success, fail) => {
     const request = new XMLHttpRequest();
@@ -23,27 +24,41 @@ import UserList  from './components/UserList';
 
 export default class App extends Component {
   constructor(props) {
-    super(props);
+
+    super(props);  
+
     this.state = {
       data: null,
       phrase: 'Нажми на кнопку!',
       count: 0
     };
+    //this.loadData(); 
+  }
+
+  componentDidMount(){
     this.loadData();
   }
+
   loadData() {
+
     load('/data.json').then(users => {
+
       this.setState({
         data: JSON.parse(users)
       });
-  });
-}
+
+    });
+
+  }
+
+
   updateBtn() {
     
     this.setState({
       count: this.state.count + 1,
       phrase: phrases[parseInt(Math.random() * phrases.length)]
     });
+
   }
 
   render() {
