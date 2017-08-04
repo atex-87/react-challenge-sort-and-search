@@ -33,7 +33,9 @@ export default class App extends Component {
       data: null,
       activeIndex: 0,
       inputValue: ''
-    };
+    };   
+  }
+  componentDidMount(){ // Для Жени, чтоб не занудствовал. В конструкторе оно отлично работает
     this.loadData(); 
   }
   UpdateData(params){
@@ -42,8 +44,9 @@ export default class App extends Component {
   loadData() {
 
     load('/data.json').then(users => {
+      this.initialData = JSON.parse(users);
       this.setState({
-        data: JSON.parse(users)
+        data:  this.initialData
       });
 
     });
@@ -60,7 +63,7 @@ export default class App extends Component {
       <div className="container app">
         <div className="row">
             <div className="col-xs-12">
-              <SearchBar UpdateData={this.UpdateData.bind(this)} inputValue={this.state.inputValue}  data={this.state.data}/>
+              <SearchBar UpdateData={this.UpdateData.bind(this)} inputValue={this.state.inputValue}  data={ this.initialData}/>
           </div>
         </div>
         <div className="row">
