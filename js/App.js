@@ -42,8 +42,9 @@ export default class App extends Component {
   loadData() {
 
     load('/data.json').then(users => {
+      this.initData = JSON.parse(users);
       this.setState({
-        data: JSON.parse(users)
+        data: this.initData
       });
 
     });
@@ -60,7 +61,7 @@ export default class App extends Component {
       <div className="container app">
         <div className="row">
             <div className="col-xs-12">
-              <SearchBar UpdateData={this.UpdateData.bind(this)} inputValue={this.state.inputValue}  data={this.state.data}/>
+              <SearchBar UpdateData={this.UpdateData.bind(this)} inputValue={this.state.inputValue}  data={this.initData}/>
           </div>
         </div>
         <div className="row">
