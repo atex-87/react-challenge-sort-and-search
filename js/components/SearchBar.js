@@ -4,9 +4,8 @@ export default ({ inputValue, data, UpdateData }) =>{
         let newData = data.filter((i) =>{
            return i.name.toLowerCase().indexOf(e.target.value) >= 0
         })
-        UpdateData({inputValue : e.target.value, data : newData})
-        
-        
+        UpdateData({inputValue : e.target.value, data : newData, current: 1})
+    
     }
     return (
         <div className="searchbar form-group" >

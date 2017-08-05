@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 const UserData = ({data, index, getActiveUser}) => {
+  if(data.length==0)  return <p>Нет результатов</p>
   return (
-    
   <tr key={index} onClick={() => getActiveUser(index)}>
         <td><img src={`images/${data.image}.svg`}  className="user-image" /></td>
         <td> {data.name} </td>

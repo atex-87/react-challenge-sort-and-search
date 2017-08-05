@@ -4,7 +4,7 @@ import UserList  from './components/UserList';
 import ActiveUser  from './components/ActiveUser';
 import ToolBar  from './components/ToolBar';
 import SearchBar  from './components/SearchBar';
-
+import Paginator from './components/Paginator';
 
 const load =  url => {
   return new Promise((success, fail) => {
@@ -31,9 +31,11 @@ export default class App extends Component {
 
     this.state = {
       data: null,
+      current: 1,
+      itemsOfPage: 10,
       activeIndex: 0,
       inputValue: ''
-    };   
+    };    
   }
   componentDidMount(){ // Для Жени, чтоб не занудствовал. В конструкторе оно отлично работает
     this.loadData(); 
@@ -78,8 +80,13 @@ export default class App extends Component {
           </div>
 
           <div className="col-md-9">
-            <UserList data={this.state.data} getActiveUser = {this.getActiveUsers.bind(this)}/>
+            <UserList data={this.state.data} current={this.state.current} itemsOfPage={this.state.itemsOfPage} getActiveUser = {this.getActiveUsers.bind(this)}/>
           </div>        
+        </div>
+        <div className="row">
+            <div className="col-md-9 col-md-offset-3">
+                <Paginator itemsOfPage={this.state.itemsOfPage}  current={this.state.current} data={this.state.data} UpdateData={this.UpdateData.bind(this)}/>
+            </div>
         </div>
        
       </div>

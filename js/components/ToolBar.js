@@ -7,7 +7,7 @@ export default class ToolBar extends Component {
     }
    
     setSortItems(indexKey){
-        if(!this.props.data || this.props.data.lendth<=1) return false
+        if(!this.props.data || this.props.data.length<2) return false
         let order =  this.sortState ? 1 : -1,
         newData = this.props.data.sort((a,b)=>{ if (a[indexKey] === b[indexKey]) return 0;
           return a[indexKey] > b[indexKey] ? order : order * -1;

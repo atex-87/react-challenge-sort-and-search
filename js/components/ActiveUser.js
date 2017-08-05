@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 const ActiveUser = ({data, activeIndex}) => {
-    if(!data) return <p>Ждемс</p>
+     if (!data || !data[activeIndex]) { return <p></p>; }
     let activeItem = data[activeIndex];
     return(
        <div className="thumbnail">    
