@@ -3,6 +3,7 @@ const ActiveUser = ({data, activeIndex}) => {
      if (!data || !data[activeIndex]) { return <p></p>; }
     let activeItem = data[activeIndex];
     return(
+        
        <div className="thumbnail">    
            <img src={`images/${activeItem.image}.svg`} />
            <div className="thumbnail-caption">

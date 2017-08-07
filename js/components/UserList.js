@@ -6,7 +6,6 @@ const UserList = ({data, current, itemsOfPage, getActiveUser}) => {
   let userTemplite; 
     if(!data) return <p>"Упс"</p> 
    else{
-      if(data.length==0) return <p>Нет результатов</p>
       const itemStart = (current - 1) * itemsOfPage,
             finish = itemsOfPage * current-1;
       userTemplite = data.map((user, index) =>{
